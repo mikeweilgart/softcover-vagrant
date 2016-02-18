@@ -61,16 +61,31 @@ install them now.  For example:
     ```
 
     After you've done this the softcover-ubuntu-14.04.box file will not be used again.
-    You can delete it safely, or save it if you want.
+    You can delete it safely, or save it if you want by skipping step 8.
 
-8. Make a new folder where you will have the new vagrant box, cd into it and then:
+8. Remove the box now that it's been added and vagrant is storing it elsewhere:
 
     ```console
+    rm softcover-ubuntu-14.04.box
+    ```
+
+9. Clean up the box we used for provisioning:
+
+    ```console
+    vagrant destroy
+    ```
+
+10. Make a new folder where you will have the new vagrant box, cd into it and initialize
+your new vagrant box using the packaged VM we've just created:
+
+    ```console
+    mkdir -p /path/to/new/vagrant/location/my-softcover-box
+    cd /path/to/new/vagrant/location/my-softcover-box
     vagrant init softcover-ubuntu-14.04
     ```
 
-You can now vagrant up and vagrant destroy all you want, and
-softcover and asciidoc will be fully usable from the moment you vagrant ssh.
+You can now `vagrant up` and `vagrant destroy` all you want, and
+softcover and asciidoc will be fully usable from the moment you `vagrant ssh`.
 The directory on your host computer where the Vagrantfile is stored will be accessible
 from the guest as `/vagrant` and I recommend keeping all softcover project directories in there.
 

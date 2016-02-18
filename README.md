@@ -6,9 +6,9 @@ Vagrantfile and README originally prepared 29 October 2015 by Mike Weilgart
 
 ## Instructions for using the Vagrantfile:
 
-0. If you haven't installed vagrant and virtualbox, do so.
-1. Put the Vagrantfile in a folder by itself.  (It's okay to have this README in the same folder.)
-2. cd into that folder.  Then run the following:
+1. If you haven't installed vagrant and virtualbox, do so.
+2. Put the Vagrantfile in a folder by itself.  (It's okay to have this README in the same folder.)
+3. cd into that folder.  Then run the following:
 
     ```console
     vagrant up
@@ -19,7 +19,7 @@ Vagrantfile and README originally prepared 29 October 2015 by Mike Weilgart
     Do it with a good internet connection.  Run it as `time vagrant up` if you're curious how long
     it will take.
 
-3. Log in to the vagrant box:
+4. Log in to the vagrant box:
 
     ```console
     vagrant ssh
@@ -31,7 +31,7 @@ Vagrantfile and README originally prepared 29 October 2015 by Mike Weilgart
     run a 90 minute command every time you need to refresh your environment!  So we'll repackage
     this vagrant box for later reuse.
 
-4. If you want other packages to be available on your system each time you `vagrant up`,
+5. If you want other packages to be available on your system each time you `vagrant up`,
 install them now.  For example:
 
     ```console
@@ -39,7 +39,7 @@ install them now.  For example:
     sudo apt-get -y install git
     ```
 
-5. Do the following to make your vagrant box as small and clean as possible for repackaging:
+6. Do the following to make your vagrant box as small and clean as possible for repackaging:
 
     ```console
     sudo apt-get clean
@@ -48,34 +48,34 @@ install them now.  For example:
     cat /dev/null > ~/.bash_history && history -c && exit
     ```
 
-6. Do the following (on your host system, of course) to repackage your box:
+7. Do the following (on your host system, of course) to repackage your box:
 
     ```console
     vagrant package --output softcover-ubuntu-14.04.box
     ```
 
-7. Do the following to add the box to your system in vagrant and make it usable:
+8. Do the following to add the box to your system in vagrant and make it usable:
 
     ```console
     vagrant box add softcover-ubuntu-14.04 softcover-ubuntu-14.04.box
     ```
 
     After you've done this the softcover-ubuntu-14.04.box file will not be used again.
-    You can delete it safely, or save it if you want by skipping step 8.
+    You can delete it safely, or save it if you want by skipping step 9.
 
-8. Remove the box now that it's been added and vagrant is storing it elsewhere:
+9. Remove the box now that it's been added and vagrant is storing it elsewhere:
 
     ```console
     rm softcover-ubuntu-14.04.box
     ```
 
-9. Clean up the box we used for provisioning:
+10. Clean up the box we used for provisioning:
 
     ```console
     vagrant destroy
     ```
 
-10. Make a new folder where you will have the new vagrant box, cd into it and initialize
+11. Make a new folder where you will have the new vagrant box, cd into it and initialize
 your new vagrant box using the packaged VM we've just created:
 
     ```console

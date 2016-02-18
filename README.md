@@ -1,23 +1,35 @@
 # softcover-vagrant
 
-A Vagrantfile for use with Softcover
+A Vagrantfile for use with the [Softcover publishing platform](https://github.com/softcover/softcover)
 
 Vagrantfile and README originally prepared 29 October 2015 by Mike Weilgart
 
 ## Instructions for using the Vagrantfile:
 
 1. If you haven't installed vagrant and virtualbox, do so.
-2. Put the Vagrantfile in a folder by itself.  (It's okay to have this README in the same folder.)
-3. cd into that folder.  Then run the following:
+2. Clone this project to your local box
+
+    ```console
+    git clone git@github.com:mikeweilgart/softcover-vagrant.git
+    ```
+
+3. Change directories into the project.
+
+    ```console
+    cd softcover-vagrant
+    ```
+
+3. Run the following *very long running command* (read on before you do it!)
 
     ```console
     vagrant up
     ```
 
-    This will take roughly an hour and a half, as it will first download a minimal basebox, then
-    install ALL software needed to run softcover, including the several GB worth of tex packages.
-    Do it with a good internet connection.  Run it as `time vagrant up` if you're curious how long
-    it will take.
+    **This will take roughly an hour and a half**, as it will first
+    download a minimal basebox, then download and install ALL
+    software needed to run softcover, including the several GB worth
+    of tex packages.  Do it with a good internet connection.  Run
+    it as `time vagrant up` if you're curious how long it will take.
 
 4. Log in to the vagrant box:
 
@@ -27,12 +39,13 @@ Vagrantfile and README originally prepared 29 October 2015 by Mike Weilgart
 
     You are now logged in to the vagrant box.  Don't do your work yet, though!
 
-    The point of Vagrant is a *disposable, reproducible* virtual environment.  You don't want to
-    run a 90 minute command every time you need to refresh your environment!  So we'll repackage
+    The point of Vagrant is a *disposable, reproducible* virtual
+    environment.  You don't want to run a 90 minute command every
+    time you need to refresh your environment!  So next we'll repackage
     this vagrant box for later reuse.
 
-5. If you want other packages to be available on your system each time you `vagrant up`,
-install them now.  For example:
+5. If you want other packages to be available on your system each
+time you `vagrant up`, install them now.  For example:
 
     ```console
     sudo apt-get -y install vim
@@ -61,7 +74,10 @@ install them now.  For example:
     ```
 
     After you've done this the softcover-ubuntu-14.04.box file will not be used again.
-    You can delete it safely, or save it if you want by skipping step 9.
+    However you can save it if you want to by skipping the next step.  (If you are
+    setting up this vagrant environment for a whole team of people, this box is the
+    file you should distribute!  It's not included in this git repository because it
+    is almost 3 GB.)
 
 9. Remove the box now that it's been added and vagrant is storing it elsewhere:
 
@@ -76,7 +92,7 @@ install them now.  For example:
     ```
 
 11. Make a new folder where you will have the new vagrant box, cd into it and initialize
-your new vagrant box using the packaged VM we've just created:
+your new vagrant box using the packaged VM you've just created:
 
     ```console
     mkdir -p /path/to/new/vagrant/location/my-softcover-box
